@@ -75,3 +75,33 @@ export interface SiteSettings {
   currency: string;
   currency_code: string;
 }
+
+// Tracking System Types
+export interface TrackingRecord {
+  id: string;
+  tracking_number: string;
+  customer_name: string;
+  customer_phone: string;
+  status: 'pending' | 'processing' | 'in_transit' | 'out_for_delivery' | 'delivered' | 'cancelled';
+  notes?: string;
+  image_url?: string;
+  extracted_data?: ExtractedData;
+  created_at: string;
+  updated_at: string;
+  created_by?: string;
+}
+
+export interface ExtractedData {
+  tracking_number?: string;
+  customer_name?: string;
+  customer_phone?: string;
+  address?: string;
+  date?: string;
+  raw_text?: string;
+  [key: string]: any;
+}
+
+export interface TrackingQuery {
+  customer_name: string;
+  customer_phone: string;
+}
